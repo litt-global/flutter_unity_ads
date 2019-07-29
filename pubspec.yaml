@@ -1,8 +1,8 @@
 name: flutter_unity_ads
 description: A new Flutter plugin.
 version: 0.0.1
-author:
-homepage:
+author: HiepLQ <lequanghiep74@gmail.com>
+homepage: https://gofinity.com
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
