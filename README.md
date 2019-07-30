@@ -2,6 +2,11 @@
 
 flutter_unity_ads plugin.
 
+## Version
+
+Android: 3.2.0
+Ios: 3.1.0
+
 ## Getting Started
 
 To implement `UnityAdsListener`
