@@ -9,5 +9,7 @@
 pubspec.lock
 
 ios/.generated/
+example/ios/Runner.xcworkspace/xcshareddata/
+example/ios/Podfile.lock
 
 build/

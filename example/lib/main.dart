@@ -14,8 +14,8 @@ class _MyAppState extends State<MyApp> with UnityAdsListener {
   @override
   void initState() {
     super.initState();
-    FlutterUnityAds.initialize('124124', '', this, testMode: true);
-    Future.delayed(Duration(seconds: 10), () {
+    FlutterUnityAds.initialize('124124', '18660', this, testMode: true);
+    Future.delayed(Duration(seconds: 5), () {
       FlutterUnityAds.show();
     });
   }
