@@ -1,16 +1,20 @@
-# flutter_unity_ads_example
+# flutter_unity_ads
 
 Demonstrates how to use the flutter_unity_ads plugin.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To implement `UnityAdsListener`
+```
+class _MyAppState extends State<MyApp> with UnityAdsListener {
+```
 
-A few resources to get you started if this is your first Flutter project:
+To `initialize` and `show` ads.
+```
+FlutterUnityAds.initialize('124124', '18660', this, testMode: true);
+FlutterUnityAds.show();
+```
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Note:
+`124124` is android game id test
+`18660` is ios game id test

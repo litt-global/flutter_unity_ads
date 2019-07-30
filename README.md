@@ -1,14 +1,20 @@
 # flutter_unity_ads
 
-A new Flutter plugin.
+flutter_unity_ads plugin.
 
 ## Getting Started
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+To implement `UnityAdsListener`
+```
+class _MyAppState extends State<MyApp> with UnityAdsListener {
+```
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+To `initialize` and `show` ads.
+```
+FlutterUnityAds.initialize('124124', '18660', this, testMode: true);
+FlutterUnityAds.show();
+```
+
+Note:
+`124124` is android game id test
+`18660` is ios game id test
