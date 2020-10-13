@@ -61,6 +61,7 @@ public class SwiftFlutterUnityAdsPlugin: NSObject, FlutterPlugin, UnityAdsDelega
             if ((args["placementId"] as? String) != nil && (args["serverId"] as? String) != nil) {
                 let playerMetaData = UADSPlayerMetaData();
                 playerMetaData.setServerId(args["serverId"] as? String);
+                NSLog("Placement id: %a and serverId %b", args["placementId"] as! String, args["serverId"] as! String);
                 playerMetaData.commit();
                 UnityAds.show(self.mViewController!, placementId: args["placementId"] as! String);
             } else {
