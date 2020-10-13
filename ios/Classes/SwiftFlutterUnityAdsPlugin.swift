@@ -57,6 +57,16 @@ public class SwiftFlutterUnityAdsPlugin: NSObject, FlutterPlugin, UnityAdsDelega
                 UnityAds.show(self.mViewController!);
             }
             result(nil);
+        } else if(call.method == "showWithServerCallback"){
+            if ((args["placementId"] as? String) != nil && (args["serverId"] as? String) != nil) {
+                let playerMetaData = UADSPlayerMetaData();
+                playerMetaData.setServerId(args["serverId"] as? String);
+                playerMetaData.commit();
+                UnityAds.show(self.mViewController!, placementId: args["placementId"] as! String);
+            } else {
+                UnityAds.show(self.mViewController!);
+            }
+            result(nil);
         } else {
             result(FlutterMethodNotImplemented);
         }

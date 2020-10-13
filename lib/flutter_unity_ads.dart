@@ -17,12 +17,11 @@ enum UnityAdsError {
   file_io_error,
   device_id_error,
   show_error,
-  internal_error
+  internal_error,
 }
 
 class FlutterUnityAds {
-  static const MethodChannel _channel =
-      const MethodChannel('flutter_unity_ads');
+  static const MethodChannel _channel = const MethodChannel('flutter_unity_ads');
 
   static UnityAdsListener _listener;
 
@@ -47,8 +46,7 @@ class FlutterUnityAds {
     } else if (Platform.isIOS) {
       gameId = gameIosId;
     } else {
-      throw new UnsupportedError(
-          'Unsupported Platform! Only Android and IOS are supported!');
+      throw new UnsupportedError('Unsupported Platform! Only Android and IOS are supported!');
     }
     _listener = listener;
     _channel.setMethodCallHandler(_listener._handle);
@@ -94,16 +92,18 @@ class FlutterUnityAds {
   static Future<Null> show({String placementId}) async {
     await _channel.invokeMethod('show', {'placementId': placementId});
   }
+
+  static Future<Null> showWithServerCallback({String placementId, String serverId}) async {
+    await _channel.invokeMethod('showWithServerCallback', {'placementId': placementId, 'serverId': serverId});
+  }
 }
 
 abstract class UnityAdsListener {
   Future<Null> _handle(MethodCall methodCall) async {
     if (methodCall.method == 'onUnityAdsError') {
-      onUnityAdsError(UnityAdsError.values[methodCall.arguments['error']],
-          methodCall.arguments['message']);
+      onUnityAdsError(UnityAdsError.values[methodCall.arguments['error']], methodCall.arguments['message']);
     } else if (methodCall.method == 'onUnityAdsFinish') {
-      onUnityAdsFinish(methodCall.arguments['placementId'],
-          FinishState.values[methodCall.arguments['result']]);
+      onUnityAdsFinish(methodCall.arguments['placementId'], FinishState.values[methodCall.arguments['result']]);
     } else if (methodCall.method == 'onUnityAdsReady') {
       onUnityAdsReady(methodCall.arguments);
     } else if (methodCall.method == 'onUnityAdsStart') {

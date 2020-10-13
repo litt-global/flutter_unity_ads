@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import com.unity3d.ads.IUnityAdsListener;
 import com.unity3d.ads.UnityAds;
+import com.unity3d.ads.metadata.PlayerMetaData;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -91,6 +92,16 @@ public class FlutterUnityAdsPlugin implements MethodCallHandler {
             result.success(null);
         } else if (call.method.equals("show")) {
             if (call.hasArgument("placementId")) {
+                UnityAds.show(mActivity, call.<String>argument("placementId"));
+            } else {
+                UnityAds.show(mActivity);
+            }
+            result.success(null);
+        } else if (call.method.equals("showWithServerCallback")) {
+            if (call.hasArgument("placementId") && call.hasArgument("serverId")) {
+                PlayerMetaData playerMetaData = new PlayerMetaData(mActivity);
+                playerMetaData.setServerId(call.<String>argument("serverId"));
+                playerMetaData.commit();
                 UnityAds.show(mActivity, call.<String>argument("placementId"));
             } else {
                 UnityAds.show(mActivity);
